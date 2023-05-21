@@ -9,7 +9,7 @@ package ejercicio01;
 /**
  * Classe principal.
  */
-public class Main {
+public class MainEj1 {
     /**
      * Metodo principal de la classe.
      * @param args

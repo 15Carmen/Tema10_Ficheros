@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * Classe principal.
  */
-public class Main {
+public class MainEj4 {
     /**
      * Metodo principal de la classe.
      *
