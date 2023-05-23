@@ -2,7 +2,7 @@ package ejercicio08;
 
 import java.time.LocalDate;
 
-class TemperaturaRegistro {
+class Temperaturas {
 
     //Declaramos los atributos
 
@@ -22,7 +22,7 @@ class TemperaturaRegistro {
     private int temperaturaMinima = 0;
 
     //Declaramos el constructor
-    public TemperaturaRegistro(LocalDate fecha, int temperaturaMaxima, int temperaturaMinima) {
+    public Temperaturas(LocalDate fecha, int temperaturaMaxima, int temperaturaMinima) {
         this.fecha = fecha;
 
         //Verificamos que la temperatura máxima no sea menor a la mínima y, si lo es, mostramos un mensaje de error

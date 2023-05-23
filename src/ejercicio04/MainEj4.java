@@ -19,27 +19,27 @@ public class MainEj4 {
      * @param args
      */
     public static void main(String[] args) {
-        BufferedWriter escritura = null;
+        BufferedWriter bw = null;
         Scanner sc = new Scanner(System.in);
         String texto = "";
         try {
-            escritura = new BufferedWriter(new FileWriter("escribir.txt"));
+            bw = new BufferedWriter(new FileWriter("escribir.txt"));
 
             texto = sc.nextLine();
             while (!texto.equals("fin")) {
-                escritura.write(texto);
-                escritura.newLine();
+                bw.write(texto);
+                bw.newLine();
                 texto = sc.nextLine();
             }
 
-            escritura.flush();
+            bw.flush();
 
         } catch (IOException e) {
             System.out.println("Error al crear el fichero");
             System.out.println(e.getMessage());
         } finally {
             try {
-                escritura.close();
+                bw.close();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }

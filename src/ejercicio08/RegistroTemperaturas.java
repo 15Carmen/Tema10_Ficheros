@@ -9,14 +9,18 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase que contiene los métodos necesarios para el funcionamiento del programa, como el menú, el registro de temperaturas, etc.
+ */
 public class RegistroTemperaturas {
 
     //Declaramos el nombre del archivo de texto donde vamos a guardar los registros
     protected static final String ARCHIVO_REGISTRO = "registro_temperaturas.txt";
 
     //Declaramos la colección donde vamos a guardar los registros
-    protected static List<TemperaturaRegistro> registros;
+    protected static List<Temperaturas> registros;
 
+    //Declaramos el objeto Scanner para leer datos por teclado
     protected static Scanner sc = new Scanner(System.in);
 
     /**
@@ -53,7 +57,7 @@ public class RegistroTemperaturas {
         temperaturaMinima = sc.nextInt();
 
         //Creamos un nuevo registro con los datos ingresados por el usuario
-        TemperaturaRegistro registro = new TemperaturaRegistro(fecha, temperaturaMaxima, temperaturaMinima);
+        Temperaturas registro = new Temperaturas(fecha, temperaturaMaxima, temperaturaMinima);
         //Agregamos el registro a la colección de registros
         registros.add(registro);
     }
@@ -75,7 +79,7 @@ public class RegistroTemperaturas {
             System.out.println("=== HISTORIAL DE REGISTROS ===");
 
             //Recorremos la colección de registros y mostramos cada registro por pantalla
-            for (TemperaturaRegistro registro : registros) {
+            for (Temperaturas registro : registros) {
                 System.out.println(registro);
             }
 
@@ -84,7 +88,7 @@ public class RegistroTemperaturas {
             minimaTemperaturaMinima = Integer.MAX_VALUE;
 
             //Recorremos la colección de registros y calculamos la máxima temperatura máxima y la mínima temperatura mínima registradas
-            for (TemperaturaRegistro registro : registros) {
+            for (Temperaturas registro : registros) {
                 maximaTemperaturaMaxima = Math.max(maximaTemperaturaMaxima, registro.getTemperaturaMaxima());
                 minimaTemperaturaMinima = Math.min(minimaTemperaturaMinima, registro.getTemperaturaMinima());
             }
@@ -126,7 +130,7 @@ public class RegistroTemperaturas {
                 temperaturaMinima = Integer.parseInt(campos[2]);
 
                 //Creamos un nuevo registro con los datos del archivo de texto
-                TemperaturaRegistro registro = new TemperaturaRegistro(fecha, temperaturaMaxima, temperaturaMinima);
+                Temperaturas registro = new Temperaturas(fecha, temperaturaMaxima, temperaturaMinima);
                 //Agregamos el registro a la colección de registros
                 registros.add(registro);
             }
@@ -150,7 +154,7 @@ public class RegistroTemperaturas {
             bw = new BufferedWriter(new FileWriter(ARCHIVO_REGISTRO));
 
             //Recorremos la colección de registros y guardamos cada registro en el archivo de texto
-            for (TemperaturaRegistro registro : registros) {
+            for (Temperaturas registro : registros) {
 
                 //Guardamos en la variable linea los datos del registro separados por comas
                 linea = registro.getFecha() + "," + registro.getTemperaturaMaxima() + "," + registro.getTemperaturaMinima();

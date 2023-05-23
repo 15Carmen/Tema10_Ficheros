@@ -12,7 +12,7 @@ public class MainEj8 {
         int opcion = 0; //Variable donde guardaremos la opción del menú seleccionada
 
         // Declarar la lista de registros
-        RegistroTemperaturas.registros = new ArrayList<>();
+        //RegistroTemperaturas.registros = new ArrayList<>();
         // Cargar los registros existentes desde el archivo
         RegistroTemperaturas.cargarRegistros();
 
