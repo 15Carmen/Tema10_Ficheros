@@ -19,6 +19,8 @@ package ejercicio07;
 
 import java.util.Scanner;
 
+import static ejercicio07.Utilidades.agenda;
+
 /**
  * Clase principal.
  */
@@ -48,7 +50,7 @@ public class MainEj7 {
 
             //Según la opción elegida por el usuario
             switch (opcion) {
-                case 1: {
+                case 1 -> {
                     try {
                         //Le pedimos al usuario que introduzca el nombre del contacto
                         System.out.println("Introduce el nombre del contacto:");
@@ -56,20 +58,32 @@ public class MainEj7 {
                         System.out.println("Introduce el teléfono del contacto:");
                         telefono = sc.next();
 
-                        //Llamamos al método nuevoContacto de la clase Utilidades para añadir un nuevo contacto
-                        Utilidades.nuevoContacto(nombre, telefono);
+                        //Si el nombre del contacto no existe en la agenda
+                        if(!nombre.equals(agenda.get(nombre))){
+                            Utilidades.nuevoContacto(nombre, telefono); //Llamamos al método nuevoContacto de la clase Utilidades para añadir el contacto
+                        }
                     } catch (MaxSizeException e) {  //Si hay más de 20 contactos, capturamos la excepción
                         System.err.println(e.toString());   //Mostramos el mensaje de error
                     }
-                }
-                case 2: {
 
                 }
-                case 3: {
+                case 2-> {
+                    //Le pedimos al usuario que introduzca el nombre del contacto que desea buscar
+                    System.out.println("Introduce el nombre del contacto:");
+                    nombre = sc.next();
+                    sc.nextLine();
+
+                    //Llamamos al método buscarPorNombre de la clase Utilidades para buscar el contacto
+                    Utilidades.buscarPorNombre(nombre);
 
                 }
-                case 4: {
-                    System.out.println("Adiós! :)"); //Mostramos un mensaje de despedida
+                case 3-> {
+                    System.out.println("Estos son los contactos de la agenda: "); //Mostramos un mensaje
+                    Utilidades.mostrarTodos(); //Llamamos al método mostrarTodos para mostrar todos los contactos
+                }
+                case 4-> {
+                    Utilidades.escribirFichero(); //Llamamos al método guardarAgenda para guardar los contactos en el fichero
+                    System.out.println("Adiós!"); //Mostramos un mensaje de despedida
                 }
             }
         } while (opcion != 4);
