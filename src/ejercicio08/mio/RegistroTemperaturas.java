@@ -1,4 +1,4 @@
-package ejercicio08;
+package ejercicio08.mio;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

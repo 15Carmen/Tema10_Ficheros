@@ -1,8 +1,4 @@
-package ejercicio08;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+package ejercicio08.mio;
 
 public class MainEj8 {
 
