@@ -75,7 +75,7 @@ public class MainEj6 {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("Error al cerrar el fichero");
                 }
             }
         }
@@ -117,7 +117,7 @@ public class MainEj6 {
                     bw.close();
                 }
             } catch (IOException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Error al cerrar el fichero");
             }
         }
         return exito;

@@ -50,6 +50,8 @@ public class MainEj8 {
             }
         } while (opc != 3);
 
+        //Cerramos el scanner
+        sc.close();
 
     }
 

@@ -26,9 +26,11 @@ public class MainEj1 {
         double media;       //Variable donde guardaremos la media de los números del fichero
         int contador = 0;   //Variable donde guardaremos el número de números del fichero
 
+        Scanner sc = null;
+
         try {
             //Creamos el objeto Scanner para leer el fichero
-            Scanner sc = new Scanner(new FileReader("src/ejercicio01/NumerosReales.txt"));
+            sc = new Scanner(new FileReader("src/ejercicio01/NumerosReales.txt"));
 
             //Mientras haya un número en el fichero, lo sumamos a la variable suma y aumentamos el contador
             while (sc.hasNextDouble()) {
@@ -43,11 +45,12 @@ public class MainEj1 {
             System.out.println("La suma de los números del fichero es: " + suma);
             System.out.println("La media de los números del fichero es: " + media);
 
-            //Cerramos el fichero
-            sc.close();
-
         } catch (FileNotFoundException e) { //Si el fichero no existe, mostramos un mensaje de error
             System.err.println("Fichero no encontrado.");
+        }finally {
+            if (sc != null) {
+                sc.close();
+            }
         }
     }
 

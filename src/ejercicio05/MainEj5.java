@@ -58,19 +58,27 @@ public class MainEj5 {
 
         //Escribimos los datos en el fichero
         escribirDatos();
+
+        //Cerramos el scanner
+        sc.close();
     }
 
     private static void escribirDatos() {
 
         //Declaramos las variables
-        BufferedWriter bw;   //Variable donde guardaremos el BufferedWriter
+        BufferedWriter bw = null;   //Variable donde guardaremos el BufferedWriter
         String linea;   //Variable donde guardaremos la línea leida del archivo de texto
         String nombre;
         int edad;
+        File fichero = new File("src/ejercicio05/datos.txt");
 
         try {
+            //Comprobamos si el archivo existe, si no existe lo creamos
+            if (!fichero.exists()){
+                fichero.createNewFile();
+            }
             //Inicializamos el BufferedWriter
-            bw = new BufferedWriter(new FileWriter("src/ejercicio05/datos.txt", true));
+            bw = new BufferedWriter(new FileWriter(fichero, true));
 
             //Recorremos la colección de registros y guardamos cada registro en el archivo de texto
             for (Map.Entry<String, Integer> entrada : usuarios.entrySet()) {
@@ -87,9 +95,17 @@ public class MainEj5 {
             }
             //Limpiamos el buffer
             bw.flush();
-            bw.close(); //cerramos el buffer
+
         } catch (IOException e) {
             System.out.println("Error al guardar los registros en el archivo.");
+        } finally {
+            try {
+                if (bw != null) {
+                    bw.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Error al cerrar el archivo.");
+            }
         }
     }
 
