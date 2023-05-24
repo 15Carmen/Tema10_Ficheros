@@ -23,7 +23,7 @@ public class MainEj4 {
         Scanner sc = new Scanner(System.in);
         String texto = "";
         try {
-            bw = new BufferedWriter(new FileWriter("escribir.txt"));
+            bw = new BufferedWriter(new FileWriter("src/ejercicio04/escribir.txt"));
 
             texto = sc.nextLine();
             while (!texto.equals("fin")) {

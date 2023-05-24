@@ -70,7 +70,7 @@ public class MainEj5 {
 
         try {
             //Inicializamos el BufferedWriter
-            bw = new BufferedWriter(new FileWriter("datos.txt", true));
+            bw = new BufferedWriter(new FileWriter("src/ejercicio05/datos.txt", true));
 
             //Recorremos la colección de registros y guardamos cada registro en el archivo de texto
             for (Map.Entry<String, Integer> entrada : usuarios.entrySet()) {
