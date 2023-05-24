@@ -59,15 +59,16 @@ public class MainEj7 {
                         telefono = sc.next();
 
                         //Si el nombre del contacto no existe en la agenda
-                        if(!nombre.equals(agenda.get(nombre))){
-                            Utilidades.nuevoContacto(nombre, telefono); //Llamamos al método nuevoContacto de la clase Utilidades para añadir el contacto
-                        }
+                        Utilidades.nuevoContacto(nombre, telefono); //Llamamos al método nuevoContacto de la clase Utilidades para añadir el contacto
+
                     } catch (MaxSizeException e) {  //Si hay más de 20 contactos, capturamos la excepción
+                        System.err.println(e.toString());   //Mostramos el mensaje de error
+                    } catch (SameNameException e) { //Si el nombre del contacto ya existe, capturamos la excepción
                         System.err.println(e.toString());   //Mostramos el mensaje de error
                     }
 
                 }
-                case 2-> {
+                case 2 -> {
                     //Le pedimos al usuario que introduzca el nombre del contacto que desea buscar
                     System.out.println("Introduce el nombre del contacto:");
                     nombre = sc.next();
@@ -77,11 +78,11 @@ public class MainEj7 {
                     Utilidades.buscarPorNombre(nombre);
 
                 }
-                case 3-> {
+                case 3 -> {
                     System.out.println("Estos son los contactos de la agenda: "); //Mostramos un mensaje
                     Utilidades.mostrarTodos(); //Llamamos al método mostrarTodos para mostrar todos los contactos
                 }
-                case 4-> {
+                case 4 -> {
                     Utilidades.escribirFichero(); //Llamamos al método guardarAgenda para guardar los contactos en el fichero
                     System.out.println("Adiós!"); //Mostramos un mensaje de despedida
                 }

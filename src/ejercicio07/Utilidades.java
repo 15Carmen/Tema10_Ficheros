@@ -25,23 +25,27 @@ public class Utilidades {
 
     /**
      * Método que añade un nuevo contacto a la agenda.
-     * @param nombre  nombre del contacto a añadir
-     * @param telefono  teléfono del contacto a añadir
+     *
+     * @param nombre   nombre del contacto a añadir
+     * @param telefono teléfono del contacto a añadir
      * @throws MaxSizeException excepción que se lanza cuando la agenda está llena
      */
-    protected static void nuevoContacto(String nombre, String telefono) throws MaxSizeException {
+    protected static void nuevoContacto(String nombre, String telefono) throws MaxSizeException, SameNameException {
 
         //Si la agenda tiene menos de 20 contactos y el nombre del contacto no existe en la agenda
-        if(agenda.size() < 20 && !agenda.containsKey(nombre)){
+        if (agenda.size() > 20) {
+            throw new MaxSizeException();   //Lanzamos la excepción
+        } else if (agenda.containsKey(nombre)) {
+            throw new SameNameException();   //Lanzamos la excepción
+        } else {
             agenda.put(nombre, telefono);   //Añadimos el contacto a la agenda
-        }else {
-            throw new MaxSizeException(); //Si la agenda está llena, lanzamos la excepción
         }
 
     }
 
     /**
      * Método que buscará en la agenda un contacto por su nombre.
+     *
      * @param nombre nombre del contacto a buscar
      */
     protected static void buscarPorNombre(String nombre) {
@@ -65,11 +69,11 @@ public class Utilidades {
     /**
      * Método que escribe en un archivo de texto todos los contactos de la agenda.
      */
-    protected static void escribirFichero(){
+    protected static void escribirFichero() {
         BufferedWriter bw = null;  //Declaramos el buffer de escritura
         try {
             //Declaramos el buffer de escritura
-            bw = new BufferedWriter(new FileWriter("src/ejercicio07/contactos.txt"));
+            bw = new BufferedWriter(new FileWriter("src/ejercicio07/contactos.txt", true));
 
             //Recorremos la agenda
             for (String nombreContacto : agenda.keySet()) {
@@ -80,10 +84,10 @@ public class Utilidades {
             bw.flush(); //Vaciamos el buffer
 
 
-
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }try {
+        }
+        try {
             bw.close();    //Cerramos el bufferwriter
         } catch (IOException e) {
             System.err.println("Error al cerrar el fichero");
