@@ -19,8 +19,6 @@ package ejercicio07;
 
 import java.util.Scanner;
 
-import static ejercicio07.Utilidades.agenda;
-
 /**
  * Clase principal.
  */
@@ -39,6 +37,11 @@ public class MainEj7 {
 
         //Declaramos el scanner para leer por teclado
         Scanner sc = new Scanner(System.in);
+
+        //Si la agenda está vacía, le añadimos los contactos que hemos guardado ya en el archivo de texto
+        if(Utilidades.agenda.isEmpty()){
+            Utilidades.cargarAgenda();
+        }
 
         do {
             //Mostramos el menú
@@ -89,5 +92,6 @@ public class MainEj7 {
             }
         } while (opcion != 4);
 
+        sc.close(); //Cerramos el scanner
     }
 }
